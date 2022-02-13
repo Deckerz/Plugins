@@ -274,7 +274,11 @@ namespace Blackjack
         public readonly List<int> TempCardStorage = new();
         public List<BjPlayer> Players { get; set; } = new();
 
-        public BjPlayer Dealer { get; set; } = new();
+        public BjPlayer Dealer { get; set; } = new()
+        {
+            Name = "Dealer",
+            TotalBet = 0
+        };
 
         public void CheckForWinners()
         {

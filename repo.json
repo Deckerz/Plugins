@@ -4,7 +4,7 @@
     "Name": "Blackjack",
     "Description": "Blackjack Plugin",
     "InternalName": "Blackjack",
-    "AssemblyVersion": "0.0.0.3",
+    "AssemblyVersion": "0.0.0.4",
     "TestingAssemblyVersion": "0.4.7.3",
     "RepoUrl": "https://github.com/Deckerz/Plugins",
     "ApplicableVersion": "any",
@@ -14,9 +14,9 @@
     "DownloadCount": 0,
     "LastUpdate": 0,
     "LoadPriority": 69420,
-    "DownloadLinkInstall": "https://github.com/Deckerz/Plugins/files/8056254/latest.zip",
-    "DownloadLinkTesting": "https://github.com/Deckerz/Plugins/files/8056254/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/Deckerz/Plugins/files/8056254/latest.zip",
+    "DownloadLinkInstall": "https://github.com/Deckerz/Plugins/files/8056258/latest.zip",
+    "DownloadLinkTesting": "https://github.com/Deckerz/Plugins/files/8056258/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Deckerz/Plugins/files/8056258/latest.zip",
     "IconUrl": "https://raw.githubusercontent.com/Deckerz/Plugins/main/logo.png"
   }
 ]
