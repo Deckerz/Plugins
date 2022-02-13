@@ -58,16 +58,6 @@ namespace Blackjack
 
             _chatGui.Enable();
             _chatGui.ChatMessage += ChatGuiOnChatMessage;
-
-            CurrentGameState.Players.Add(new BjPlayer()
-            {
-                Name = "Queen FaithTwintania",
-                CurrentCards = new List<int>()
-                {
-                    11, 8
-                },
-                TotalBet = 69000
-            });
         }
 
         public void Dispose()
@@ -284,15 +274,7 @@ namespace Blackjack
         public readonly List<int> TempCardStorage = new();
         public List<BjPlayer> Players { get; set; } = new();
 
-        public BjPlayer Dealer { get; set; } = new()
-        {
-            Name = "Dealer",
-            TotalBet = 0,
-            CurrentCards = new List<int>()
-            {
-                11, 5, 5
-            }
-        };
+        public BjPlayer Dealer { get; set; } = new();
 
         public void CheckForWinners()
         {
