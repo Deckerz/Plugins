@@ -14,9 +14,9 @@
     "DownloadCount": 0,
     "LastUpdate": 0,
     "LoadPriority": 69420,
-    "DownloadLinkInstall": "https://github.com/Deckerz/Plugins/archive/refs/tags/0.0.0.1.zip",
-    "DownloadLinkTesting": "https://github.com/Deckerz/Plugins/archive/refs/tags/0.0.0.1.zip",
-    "DownloadLinkUpdate": "https://github.com/Deckerz/Plugins/archive/refs/tags/0.0.0.1.zip",
+    "DownloadLinkInstall": "https://github.com/Deckerz/Plugins/files/8056200/latest.zip",
+    "DownloadLinkTesting": "https://github.com/Deckerz/Plugins/files/8056200/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Deckerz/Plugins/files/8056200/latest.zip",
     "IconUrl": "https://raw.githubusercontent.com/Deckerz/Plugins/main/logo.png"
   }
 ]
