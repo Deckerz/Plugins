@@ -68,14 +68,19 @@ namespace Blackjack
         private void ChatGuiOnChatMessage(XivChatType type, uint senderid, ref SeString sender, ref SeString message,
             ref bool ishandled)
         {
-            if (CurrentGameState.GameOver)
-                return;
-
             var isLocalPlayer = sender.TextValue.Contains(_clientState.LocalPlayer!.Name.TextValue);
             var stringMessage = message.TextValue;
             var targetPlayer = _clientState.LocalPlayer.TargetObject as PlayerCharacter;
             if (!isLocalPlayer || type != XivChatType.Party) return;
 
+            if (stringMessage.ToLower().Contains("new game"))
+            {
+                CurrentGameState = new BjTable();
+            }
+            
+            if (CurrentGameState.GameOver)
+                return;
+            
             var parsedName = "";
             if (targetPlayer != null)
                 parsedName = targetPlayer.Name + targetPlayer.HomeWorld.GameData?.Name!;
@@ -85,26 +90,35 @@ namespace Blackjack
 
             switch (stringMessage.ToLower())
             {
-                case { } msg when msg.Contains("new game"):
-                    CurrentGameState = new BjTable();
-                    return;
                 case { } msg when msg.Contains("bets") && !msg.Contains("all bets placed"):
+                    if (CurrentGameState.GameOver)
+                        return;
                     ProcessBet(parsedName, stringMessage);
                     return;
                 case { } msg when msg.Contains("all bets placed"):
+                    if (CurrentGameState.GameOver)
+                        return;
                     CurrentGameState.Dealer = new BjPlayer() { Name = "Dealer", TotalBet = 0 };
                     return;
                 case { } msg when msg.Contains("dealer hits") || msg.Contains("dealers starting card") ||
                                   msg.Contains("reveal the dealers"):
+                    if (CurrentGameState.GameOver)
+                        return;
                     CurrentGameState.CardForDealer = true;
                     return;
                 case { } msg when msg.Contains("dealer stands") || msg.Contains("dealer bust"):
+                    if (CurrentGameState.GameOver)
+                        return;
                     CurrentGameState.CheckForWinners();
                     return;
                 case { } msg when msg.Contains("stands"):
+                    if (CurrentGameState.GameOver)
+                        return;
                     CurrentGameState.Players.First(p => p.Name == parsedName && p.HasStood == false).HasStood = true;
                     return;
                 case { } msg when msg.Contains("split"):
+                    if (CurrentGameState.GameOver)
+                        return;
                     ProcessSplit(parsedName);
                     CurrentGameState.RollingSplit = true;
                     return;
@@ -363,12 +377,12 @@ namespace Blackjack
         public string TotalBetAsString()
         {
             if (HasWon)
-                return TotalBet.ToString("F") + " (" + (TotalBet * (NatBlackjack ? 2.5 : 2)).ToString("F") + ")";
+                return TotalBet.ToString("N") + " (" + (TotalBet * (NatBlackjack ? 2.5 : 2)).ToString("N") + ")";
 
             if (Pushed)
-                return TotalBet.ToString("F") + "(PUSH)";
+                return TotalBet.ToString("N") + " (PUSH)";
 
-            return TotalBet.ToString("F");
+            return TotalBet.ToString("N");
         }
     }
 
