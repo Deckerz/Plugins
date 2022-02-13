@@ -116,7 +116,7 @@ namespace Blackjack
                         return;
                     CurrentGameState.Players.First(p => p.Name == parsedName && p.HasStood == false).HasStood = true;
                     return;
-                case { } msg when msg.Contains("split"):
+                case { } msg when msg.Contains("chooses to split"):
                     if (CurrentGameState.GameOver)
                         return;
                     ProcessSplit(parsedName);
