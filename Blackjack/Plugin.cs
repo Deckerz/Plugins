@@ -1,25 +1,27 @@
 ﻿using Dalamud.Game.Command;
 using Dalamud.IoC;
 using Dalamud.Plugin;
-using System.IO;
-using System.Reflection;
+using Dalamud.Game.ClientState;
+using Dalamud.Game.Gui;
 
-namespace SamplePlugin
+namespace Blackjack
 {
     public sealed class Plugin : IDalamudPlugin
     {
-        public string Name => "Sample Plugin";
+        public string Name => "Blackjack";
 
-        private const string commandName = "/pmycommand";
+        private const string CommandName = "/blackjack";
 
         private DalamudPluginInterface PluginInterface { get; init; }
         private CommandManager CommandManager { get; init; }
         private Configuration Configuration { get; init; }
-        private PluginUI PluginUi { get; init; }
+        private PluginUi PluginUi { get; init; }
 
         public Plugin(
             [RequiredVersion("1.0")] DalamudPluginInterface pluginInterface,
-            [RequiredVersion("1.0")] CommandManager commandManager)
+            [RequiredVersion("1.0")] CommandManager commandManager,
+            [RequiredVersion("1.0")] ChatGui chatGui,
+            [RequiredVersion("1.0")] ClientState clientState)
         {
             this.PluginInterface = pluginInterface;
             this.CommandManager = commandManager;
@@ -28,23 +30,20 @@ namespace SamplePlugin
             this.Configuration.Initialize(this.PluginInterface);
 
             // you might normally want to embed resources and load them from the manifest stream
-            var imagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "goat.png");
-            var goatImage = this.PluginInterface.UiBuilder.LoadImage(imagePath);
-            this.PluginUi = new PluginUI(this.Configuration, goatImage);
+            this.PluginUi = new PluginUi(Configuration, chatGui, clientState);
 
-            this.CommandManager.AddHandler(commandName, new CommandInfo(OnCommand)
+            this.CommandManager.AddHandler(CommandName, new CommandInfo(OnCommand)
             {
-                HelpMessage = "A useful message to display in /xlhelp"
+                HelpMessage = "/blackjack - is the main command"
             });
 
             this.PluginInterface.UiBuilder.Draw += DrawUI;
-            this.PluginInterface.UiBuilder.OpenConfigUi += DrawConfigUI;
         }
 
         public void Dispose()
         {
             this.PluginUi.Dispose();
-            this.CommandManager.RemoveHandler(commandName);
+            this.CommandManager.RemoveHandler(CommandName);
         }
 
         private void OnCommand(string command, string args)
@@ -56,11 +55,6 @@ namespace SamplePlugin
         private void DrawUI()
         {
             this.PluginUi.Draw();
-        }
-
-        private void DrawConfigUI()
-        {
-            this.PluginUi.SettingsVisible = true;
         }
     }
 }

@@ -1,0 +1,14 @@
+{
+  "Author": "Chika San @ Lich",
+  "Name": "Blackjack Plugin",
+  "Punchline": "Blackjack Plugin for clubs and others to use",
+  "Description": "Blackjack Plugin for clubs and others to us",
+  "InternalName": "BJPlugin",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "blackjack",
+    "fun",
+    "games",
+    "casino"
+  ]
+}
