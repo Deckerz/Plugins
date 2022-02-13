@@ -3,13 +3,13 @@
   <PropertyGroup>
     <Authors>Chika San</Authors>
     <Company>N/A</Company>
-    <Version>0.0.0.2</Version>
+    <Version>0.0.0.3</Version>
     <Description>Blackjack Plugin</Description>
     <Copyright>Chika San</Copyright>
     <PackageProjectUrl>n/a</PackageProjectUrl>
     <AssemblyName>Blackjack</AssemblyName>
     <RootNamespace>Blackjack</RootNamespace>
-    <AssemblyVersion>0.0.0.2</AssemblyVersion>
+    <AssemblyVersion>0.0.0.3</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup>
