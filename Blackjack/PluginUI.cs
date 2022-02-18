@@ -268,10 +268,25 @@ namespace Blackjack
                     ImGui.EndTable();
                 }
 
+                if (CurrentGameState.GameOver)
+                {
+                    if (ImGui.Button("Re-enable current game?"))
+                    {
+                        foreach (var player in CurrentGameState.Players)
+                        {
+                            player.HasWon = false;
+                            player.Pushed = false;
+                        }
+                        CurrentGameState.GameOver = false;
+                    }
+                    ImGui.SameLine();
+                }
+                
                 if (ImGui.Button("Reset Table?"))
                 {
                     CurrentGameState = new BjTable();
                 }
+
 
                 ImGui.Spacing();
             }
