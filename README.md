@@ -24,7 +24,7 @@ While this project is still a work in progress, you can use it by addin the foll
 
 https://raw.githubusercontent.com/Deckerz/Plugins/main/repo.json
 
-### MACROS
+## MACROS
 
 They can be set up however you want but they must do the following to resolve the criteria to active.
 
@@ -71,6 +71,6 @@ They can be set up however you want but they must do the following to resolve th
 - simply type `/dice party 13` while targeting the player you want to draw a card for
 
 
-### Issues
+## Issues
 
 - If you have any requests or problems create a issue on github to ask :)
